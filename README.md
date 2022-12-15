@@ -7,3 +7,11 @@
 Note that `Kafka` depends on `Zookeepe`r to store metadata about the topics and partitions. For development purposes, we don't need to interact with it and we can safely ignore it.
 
 `docker-compose` is used as well to manage the containers.
+
+To start open python-devcontainer in `vscode` and start the devcontainer.
+
+## Useful commands to interact with Kafka
+
+- list all topics currently in kafka: `kcat -b localhost:9093 -L`
+- 
+
