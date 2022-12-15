@@ -27,27 +27,7 @@ To start open python-devcontainer folder in `vscode` and start the devcontainer.
 
 The idea is presented below:
 
-```plantuml
-@startuml
-actor "User" as user
-participant "Flask API" as flask
-participant "Clickhouse" as clickhouse
-participant "Kafka" as kafka
-
-activate kafka
-activate clickhouse
-
-user -> flask : create post
-activate flask
-flask -> kafka : send post to 'posts' topic
-flask --> user : async ack
-deactivate flask
-
-clickhouse -> kafka : consume post
-kafka --> clickhouse : post
-clickhouse -> clickhouse : store post in database
-@enduml
-```
+![Sequence Diagram](http://www.plantuml.com/plantuml/proxy?src=https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/anaselhajjaji/local-kafka-devenv/master/seq-diagram.puml)
 
 ### Configure clickhouse
 
