@@ -27,7 +27,7 @@ To start open python-devcontainer folder in `vscode` and start the devcontainer.
 
 The idea is presented below:
 
-![Sequence Diagram](http://www.plantuml.com/plantuml/proxy?src=https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/anaselhajjaji/local-kafka-devenv/main/seq-diagram.puml)
+![Sequence Diagram](https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/anaselhajjaji/local-kafka-devenv/main/seq-diagram.puml)
 
 ### Configure clickhouse
 
