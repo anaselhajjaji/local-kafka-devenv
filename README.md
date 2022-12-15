@@ -49,6 +49,8 @@ clickhouse -> clickhouse : store post in database
 @enduml
 ```
 
+### Configure clickhouse
+
 After starting the devcontainer, connect to clickhouse container and run: `clickhouse-client`
 
 Then, create messages queue by running:
@@ -56,7 +58,7 @@ Then, create messages queue by running:
 ```sql
 CREATE TABLE default.message_queue
 (
-  created_at DateTime,
+  created_at String,
   content String,
   author String
 )
@@ -74,7 +76,7 @@ Now, create the tables by running:
 -- create messages table
 CREATE TABLE default.messages
 (
-  created_at DateTime,
+  created_at String,
   content String,
   author String
 )
@@ -86,3 +88,11 @@ CREATE MATERIALIZED VIEW default.messages_mv
 TO default.messages
 AS SELECT * FROM default.message_queue;
 ```
+
+### Test the API
+
+Run flask using `flask run`
+
+Then create a post using `curl -X POST -H "Content-Type: application/json" -d '{"author": "anas", "content": "Hello kafka!"}' http://localhost:5000/posts`
+
+In case it didn't work, just delete the posts topic then try again `kafka-topics.sh --bootstrap-server localhost:9092 --delete --topic posts`
