@@ -5,10 +5,17 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python (Integrated Terminal)",
+            "name": "Run Producer",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}/test-project/hello.py",
+            "program": "${workspaceFolder}/producer.py",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Run Consumer",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/consumer.py",
             "console": "integratedTerminal"
         }
     ]
