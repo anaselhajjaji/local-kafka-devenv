@@ -1,0 +1,19 @@
+@startuml
+actor "User" as user
+participant "Flask API" as flask
+participant "Clickhouse" as clickhouse
+participant "Kafka" as kafka
+
+activate kafka
+activate clickhouse
+
+user -> flask : create post
+activate flask
+flask -> kafka : send post to 'posts' topic
+flask --> user : async ack
+deactivate flask
+
+clickhouse -> kafka : consume post
+kafka --> clickhouse : post
+clickhouse -> clickhouse : store post in database
+@enduml
