@@ -12,6 +12,9 @@ Note that `Kafka` depends on `Zookeepe`r to store metadata about the topics and 
 
 To start open python-devcontainer folder in `vscode` and start the devcontainer.
 
+- Run `consumer.py` that will wait for messages
+- Run `producer.py` that will send the messages
+
 ## Useful commands to interact with Kafka
 
 [kafkacat](https://github.com/edenhill/kcat) tool is used.
