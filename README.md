@@ -23,9 +23,33 @@ To start open python-devcontainer folder in `vscode` and start the devcontainer.
 - To test out the producer (The default delimiter between messages is a newline. When you are done, press ctrl-d to send the messages): `kafkacat -b kafka:9092 -t test-topic -P`
 - To read the messages you have produced, run the following command to start a consumer: `kafkacat -b kafka:9092 -t test-topic -C`
 
-## Configure clickhouse
+## Configure clickhouse and flask API
 
-Connect to clickhouse container and run: `clickhouse-client`
+The idea is presented below:
+
+```plantuml
+@startuml
+actor "User" as user
+participant "Flask API" as flask
+participant "Clickhouse" as clickhouse
+participant "Kafka" as kafka
+
+activate kafka
+activate clickhouse
+
+user -> flask : create post
+activate flask
+flask -> kafka : send post to 'posts' topic
+flask --> user : async ack
+deactivate flask
+
+clickhouse -> kafka : consume post
+kafka --> clickhouse : post
+clickhouse -> clickhouse : store post in database
+@enduml
+```
+
+After starting the devcontainer, connect to clickhouse container and run: `clickhouse-client`
 
 Then, create messages queue by running:
 
